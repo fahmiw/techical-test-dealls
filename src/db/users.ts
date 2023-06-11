@@ -4,9 +4,11 @@ const UserSchema = new mongoose.Schema({
     fullname: { type: String, required: true },
     email: { type: String, required: true },
     telphone: { type: Number, required: true },
-    photo: { type: String, required: true },
+    decription: { type: String, required: false},
+    image_file: { type: String, required: true },
     birthday: { type: Date, required: true },
     gender: { type: Boolean, required: true },
+    is_subcribe: { type: Boolean, required: false, default: false},
     authentication: { 
         password: { type: String, required: true },
         salt:  { type: String, select: false }

@@ -10,6 +10,6 @@ export default (router: express.Router) => {
         fileFilter: filter,
         limits: { fileSize: maxSize }
     });
-    router.post('/auth/signup', upload.single('photo'), register);
+    router.post('/auth/signup', upload.single('image_file'), register);
     router.post('/auth/login', login);
 };

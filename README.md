@@ -14,32 +14,36 @@ This repository contains the code for the Service Login and SignUp API for a Dat
 
 ## Introduction
 
-The Service Signin and Signup API is a RESTful web service that allows users to sign in and sign up for an application or service. It provides secure authentication and registration endpoints, allowing developers to integrate user management functionality into their applications.
+The Service Signin and Sign Up API is a RESTful web service that allows users to sign in and sign  Up for an application or service. It provides secure authentication and registration endpoints, allowing developers to integrate user management functionality into their applications.
 
 ## Installation
 
-To run the Service Signin and Signup API locally, follow these steps:
+To run the Service Signin and Sign Up API locally, follow these steps:
 
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/fahmiw/techical-test-dealls
    ```
 
 2. Install the dependencies:
 
    ```shell
-   cd your-repo
+   cd technical-test-dealls
    npm install
    ```
 
 3. Configure the environment variables:
 
-   Create a `.env` file in the root directory and provide the necessary environment variables. For example:
+   Rename a `.env.example` file to `.env` in the root directory and provide the necessary environment variables. For example:
 
    ```plaintext
-   PORT=3000
-   DATABASE_URL=your-database-url
+   PORT=8080
+   MONGO_DATABASE=localdbtest
+   MONGO_HOST=localhost
+   MONGO_USER=
+   MONGO_PASSWORD=
+   MONGO_PORT=27017
    ```
 
 4. Start the server:
@@ -52,21 +56,67 @@ The API should now be running locally on the specified port.
 
 ## Usage
 
-To use the Service Signin and Signup API, send HTTP requests to the appropriate endpoints. The API supports both JSON and form-urlencoded request bodies, and returns JSON responses.
+To use the Service Signin and Sign Up API, send HTTP requests to the appropriate endpoints. The API supports both JSON and form-urlencoded request bodies, and returns JSON responses.
 
 ## Endpoints
 
 The following endpoints are available in the API:
 
 - `POST /api/signup`: Creates a new user account.
-- `POST /api/signin`: Authenticates a user and returns an access token.
-- `GET /api/user/:id`: Retrieves user information by ID.
+   Example Request:
+   ```json
+   {
+      "email":"example@gmail.com",
+      "telphone":"083xxxxxxxx",
+      "fullname":"Edward Jones",
+      "description": "I'm from Norway",
+      "gender":0,
+      "birthday":"2023-06-09T11:10:24.845Z",
+      "image_file":"{{file format}}",
+      "password":"password123"
+   }
+   ```
 
-For detailed information on each endpoint, including request and response examples, refer to the API documentation.
+   Example Response:
+   ```json
+   {
+    "fullname": "Edward Jones",
+    "email": "example@gmail.com",
+    "telphone": 83xxxxxxxx,
+    "description": "I'm from Norway",
+    "image_file": "profile-111529181.jpg",
+    "birthday": "2023-06-09T11:10:24.845Z",
+    "gender": false,
+    "is_subcribe": false,
+    "authentication": {
+        "password": "76890985bd9d5b3991b4531709e37d71f7fef1521f45fa88c31e8bba44f02431",
+        "salt": "f/x+dC1BYZatcwBULlPsYJoKFwPc7I1EHJgWwq2kkJVv3J+C/LB8Z4ras3zxP+5+c7hjMw/dX0ZbjsoWO1W8Z+PmsghhYaIh7nn+/vCZKcwLacJLI1pV9hX1qzbn1JUnXMocYavVyVLyZNarW9G+Q/bDP787oYEWIN4Ll//e9kA="
+    },
+    "_id": "64847e2303c8da940ee3f890",
+    "__v": 0
+   }
+   ```
+- `POST /api/login`: Authenticates a user and returns an access token.
+   Example Request:
+   ```json
+   {
+    "email": "example@gmail.com",
+    "password": "password123"
+   }
+   ```
+
+   Example Response:
+   ```json
+   {
+    "fullname": "Edward Jones",
+    "email": "example@gmail.com",
+    "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzYWx0IjoiZi94K2RDMUJZWmF0Y3dCVUxsUHNZSm9LRndQYzdJMUVISmdXd3Eya2tKVnYzSitDL0xCOFo0cmFzM3p4UCs1K2M3aGpNdy9kWDBaYmpzb1dPMVc4WitQbXNnaGhZYUloN25uKy92Q1pLY3dMYWNKTEkxcFY5aFgxcXpibjFKVW5YTW9jWWF2VnlWTHlaTmFyVzlHK1EvYkRQNzg3b1lFV0lONExsLy9lOWtBPSIsInBheWxvYWQiOiI2NDg0N2UyMzAzYzhkYTk0MGVlM2Y4OTAiLCJpYXQiOjE2ODY0MDUyMTgsImV4cCI6MTY4NjQwNTIxOX0.KgLA5ULVenozsqkdUtyG6m9sgmn388rc6iLfVYdJDtE"
+   }
+   ```
 
 ## Authentication
 
-The Service Signin and Signup API uses token-based authentication. After successful sign-in, the API returns an access token that should be included in the `Authorization` header of subsequent requests as a bearer token.
+The Service Login and Sign Up API uses token-based authentication. After successful sign-in, the API returns an access token that should be included in the `Authorization` header of subsequent requests as a bearer token.
 
 Example:
 
@@ -84,7 +134,7 @@ For example:
 
 ```json
 {
-  "error": "Invalid credentials",
+  "message": "Invalid credentials",
   "status": 401
 }
 ```
@@ -93,7 +143,7 @@ Refer to the API documentation for a list of possible error responses and their 
 
 ## Contributing
 
-Contributions to the Service Signin and Signup API are welcome. If you find a bug or have a suggestion for improvement, please create an issue or submit a pull request with your changes.
+Contributions to the Service Login and Sign Up API are welcome. If you find a bug or have a suggestion for improvement, please create an issue or submit a pull request with your changes.
 
 Before contributing, please read the [Contribution Guidelines](CONTRIBUTING.md) for more information.
 

@@ -16,6 +16,7 @@ export const login = async (req: express.Request, res: express.Response) => {
         }
 
         const user = await getUserByEmail(email).select('+authentication.salt + +authentication.password');
+        
         if(!user) {
             throw new NotFoundError(`Email ${email} account not found!`)
         }
@@ -23,7 +24,7 @@ export const login = async (req: express.Request, res: express.Response) => {
         const expectedHash = authentication(user.authentication.salt, password);
 
         if(user.authentication.password !== expectedHash) {
-            throw new AuthenticationError("Wrong Password!");
+            throw new AuthenticationError("Invalid credentials");
         }
 
         const sessionToken = generateAccessToken(user.authentication.salt, user._id.toString());
@@ -53,12 +54,12 @@ export const login = async (req: express.Request, res: express.Response) => {
 
 export const register = async (req: express.Request, res: express.Response) => {
     try {
-        const { email, password, fullname, telphone, birthday, gender } = req.body;
+        const { email, password, fullname, telphone, decription, birthday, gender } = req.body;
         
         if (req.file == undefined) {
             throw new ClientError("Please upload a file!");
         }
-        const photo = req.file.filename;
+        const image_file = req.file.filename;
 
         if(email && password && telphone && fullname && birthday && gender == undefined) {
             throw new ClientError("The request body incomplete, must fill in the variable email, password, fullname, telphone, birthday, gender");
@@ -74,9 +75,10 @@ export const register = async (req: express.Request, res: express.Response) => {
             email, 
             telphone,
             fullname,
+            decription,
             birthday,
             gender,
-            photo,
+            image_file,
             authentication: {
                 salt,
                 password: authentication(salt, password)

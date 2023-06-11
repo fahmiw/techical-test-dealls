@@ -5,22 +5,30 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "keywords": ["typescript", "jwt", "mongodb"],
+  "keywords": [
+    "typescript",
+    "jwt",
+    "mongodb"
+  ],
   "author": "Fahmi Widianto",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/body-parser": "^1.19.2",
     "@types/compression": "^1.7.2",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
     "@types/express": "^4.17.17",
+    "@types/jest": "^29.5.2",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/mongoose": "^5.11.97",
     "@types/multer": "^1.4.7",
+    "jest": "^29.5.0",
     "nodemon": "^2.0.22",
+    "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3"
   },

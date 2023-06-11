@@ -6,6 +6,10 @@
         "outDir": "dist",
         "sourceMap": true,
         "noImplicitAny": true,
+        "paths": {
+            "test/*": ["test/*"]
+        }
     },
     "include": ["src/**/*"],
+    "exclude" : ["src/**/*.test.ts"]
 }
