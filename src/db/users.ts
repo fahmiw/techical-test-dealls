@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true },
     telphone: { type: Number, required: true },
     decription: { type: String, required: false},
-    image_file: { type: String, required: true },
+    image_file: { type: String, required: false },
     birthday: { type: Date, required: true },
     gender: { type: Boolean, required: true },
     is_subcribe: { type: Boolean, required: false, default: false},
