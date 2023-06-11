@@ -28,9 +28,7 @@ server.listen(process.env.PORT, () => {
     }
 });
 
-const MONGO_URL = `mongodb://${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}`;
-
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
 
 app.use('/', router());
