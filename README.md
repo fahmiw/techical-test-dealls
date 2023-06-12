@@ -114,6 +114,11 @@ The following endpoints are available in the API:
    }
    ```
 
+   For testing, the endpoint has been deployed at the url below
+   ```shell
+   https://sore-blue-pangolin.cyclic.app
+   ```
+
 ## Authentication
 
 The Service Login and Sign Up API uses token-based authentication. After successful sign-in, the API returns an access token that should be included in the `Authorization` header of subsequent requests as a bearer token.
