@@ -4,7 +4,7 @@
   "description": "API Sign In & Sign Up Reference Dating App",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node ./src/index.ts",
+    "start": "nodemon",
     "dev": "nodemon",
     "test": "jest"
   },
