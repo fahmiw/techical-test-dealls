@@ -2,9 +2,9 @@
   "name": "technical-test-dealls",
   "version": "1.0.0",
   "description": "API Sign In & Sign Up Reference Dating App",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "start": "node",
+    "start": "node src/index.ts",
     "dev": "nodemon",
     "test": "jest"
   },
