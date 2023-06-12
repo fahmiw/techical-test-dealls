@@ -59,8 +59,7 @@ export const register = async (req: express.Request, res: express.Response) => {
         if (req.file == undefined) {
             throw new ClientError("Please upload a file!");
         }
-        //const image_file = req.file.filename;
-        const image_file = "req.file.filename";
+        const image_file = req.file.filename;
 
         if(email && password && telphone && fullname && birthday && gender == undefined) {
             throw new ClientError("The request body incomplete, must fill in the variable email, password, fullname, telphone, birthday, gender");
@@ -88,11 +87,11 @@ export const register = async (req: express.Request, res: express.Response) => {
 
         return res.status(201).json(user).end();
     } catch (error) {
-        // fs.unlink('./public/uploads/' + req.file.filename, (err) => {
-        //     if (err) {
-        //         throw new ClientError('Failed delete lastest file');
-        //     }
-        // });
+        fs.unlink('./public/uploads/' + req.file.filename, (err) => {
+            if (err) {
+                throw new ClientError('Failed delete lastest file');
+            }
+        });
         if (error instanceof ClientError) {
             res.status(error.statusCode).send({
                 message: error.message,
